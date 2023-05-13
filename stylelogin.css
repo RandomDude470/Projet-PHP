@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+#bigassphoto{
+    width: 100%;
+    transform: scaleX(-1);
+}
+body{
+    background: linear-gradient(
+    51deg,
+    rgb(88, 11, 116) 0%,
+    rgba(53, 39, 95, 1) 53%,
+    rgba(88, 11, 116, 1) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    
+}
+.rectangle{
+    height: 100vh;
+    width: 25%;
+    padding-inline: 2rem;
+}
+.purplerect{
+    position: relative;
+    background-color: #8211A9;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.purplerect .art{
+    position: relative;
+    top: 21.7%;
+}
+.purplerect .logo {
+    position: relative;
+    top: 10.15%;
+}
+.purplerect .logo img {
+    width: 75%;
+    display: block;
+    margin: auto;
+    
+}
+.whiterect{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.whiterect> .logo{
+    display: none;
+}
+.whiterect h1{
+    margin-top: 34.15%;
+    font-weight: bold;
+    font-size: 3rem;
+    color:rgba(53, 39, 95, 1);
+    margin-bottom: 46px;
+}
+.whiterect form{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    padding-block: 1rem;
+    padding-inline-start:1rem ;
+    border: 0;
+    background-color: #D9D9D9;
+    border-radius: 25px;
+   
+
+}
+.whiterect input[type="email"],input[type="text"],#password{
+    margin-bottom: 25px;
+}
+input::placeholder{
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.289);
+}
+a{
+    color: rgba(0, 0, 0, 0.43);
+    text-decoration: underline;
+    font-size: 0.7rem;
+    text-align: end;
+    padding-block: 0.4rem;
+}
+.whiterect button{
+    border :0;
+    color: white;
+    background-color: #bc18f5;
+    padding: 0.8rem;
+    border-radius: 7px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 39.6px;
+    cursor: pointer;
+}
+.whiterect button:hover{
+    opacity: 70%;
+}
+@media (max-width : 700px) {
+    .main{
+        width: 93%;
+    }
+    .purplerect{
+        display: none;
+    }
+    .rectangle{
+        width: 100%;
+
+    }
+    .whiterect{
+        border-radius: 25px;
+    }
+    .whiterect> .logo{
+        display: block;
+        margin-inline: auto;
+        padding-top: 35px;
+
+    }
+    .whiterect img{
+        width: 70%;
+        display: block;
+        margin-inline: auto;
+    }
+    h1{
+        margin-top: 25%;
+        
+    }
+}
+.badp:focus{
+    outline: none;
+    border: red solid 1px;
+}
+.goodp:focus{
+    outline: none;
+    border: green solid 1px;
+}
