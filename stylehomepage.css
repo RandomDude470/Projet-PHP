@@ -178,7 +178,9 @@ main{
     transition: height 0.5s ;
     background-color: cadetblue;
 }
-
+.whitetext{
+    background-color: white;
+}
 
 
 
