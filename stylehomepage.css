@@ -20,7 +20,7 @@ ul li{
     flex-direction: column;
 }
 nav{
-    width: 20vw;
+    min-width: 200px;
     height: 100vh;
     background-color: #D9D9D9;
     gap: 40%;
@@ -58,6 +58,7 @@ ul img{
     background :#C9C9C9;
     padding-block: 0.3rem;
     cursor: pointer;
+    border-radius: 25px 0px 0px 25px;
 }
 .nav-item:hover{
     
@@ -102,7 +103,10 @@ main{
 
 #Myaccount .upper-section{
     justify-content: end;
+    border-radius: 0px 0px 40px 40px;
+    margin-inline: 1rem;
     background-color: #35275f;
+    box-shadow: 0px 0px 4px 2px #24124f5e;
     
 }
 .profile{
@@ -139,15 +143,20 @@ main{
     background-color: #c9c9c93e;
     border-radius: 25px;
     margin: 1rem;
+    border: darkorchid 1px solid;
+    box-shadow: 0px 0px 3px 1px #24124f5e;
 }
 .bloc h3{
     font-size: 25;
+    font-weight: 500;
 }
 .bloc p{
     padding-inline: 1.1vw;
     padding-block-start: 2vh;
 }
-
+.medium{
+    font-weight: 500;
+}
 .bold{
     font-weight: 600;
 }

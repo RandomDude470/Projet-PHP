@@ -72,17 +72,17 @@ if ($arr == null  || $arr[1] != $password) {
                     <div class="bloc">
                         <h3>Personal Information : </h3>
                         <p> 
-                            <span class="bold">Full Name :</span> <?php echo $arr[2]; ?> <br>
-                            <span class="bold">Email Adress : </span>  <?php echo $arr[0]; ?> <br>
-                            <span class="bold">Age : </span> 11 years old <br>
-                            <span class="bold">Date of birth : </span> 22-03-2110 
+                            <span class="medium">Full Name :</span> <?php echo $arr[2]; ?> <br>
+                            <span class="medium">Email Adress : </span>  <?php echo $arr[0]; ?> <br>
+                            <span class="medium">Age : </span> 11 years old <br>
+                            <span class="medium">Date of birth : </span> 22-03-2110 
                         </p>
                     </div>
                     <div class="bloc">
                         <h3>Account Security : </h3>
                             <p> 
-                                <span class="bold">Password :</span> ********** <span class="pass-chang">change password</span><br>
-                                <span class="bold">Privileges : </span>  <?php echo ($arr[3]=="user")? "User":"Admin";   ?>
+                                <span class="medium">Password :</span> ********** <span class="pass-chang">change password</span><br>
+                                <span class="medium">Privileges : </span>  <?php echo ($arr[3]=="user")? "User":"Admin";   ?>
                             </p>
                     </div>
                     <div class="bloc">
