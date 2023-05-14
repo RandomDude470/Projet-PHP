@@ -57,6 +57,14 @@ ul img{
     align-items: center;
     background :#C9C9C9;
     padding-block: 0.3rem;
+    cursor: pointer;
+}
+.nav-item:hover{
+    
+    background :#c3b7cc;
+    padding-block: 0.3rem;
+    padding-inline-start: 0.4rem;
+    transition: padding-inline-start 0.3s,background 0.3s;
 }
 .nav-item span {
     padding-inline-start: 1rem;
@@ -88,7 +96,10 @@ main{
 }
 #Myaccount{
     height: 100%;
+    overflow-y: hidden;
+    transition: height 0.5s ;
 }
+
 #Myaccount .upper-section{
     justify-content: end;
     background-color: #35275f;
@@ -154,6 +165,26 @@ main{
     font-size: .95rem;
     text-decoration: underline;
 }
+
+#Media{
+    height: 0;
+    overflow-y: hidden;
+    transition: height 0.5s ;
+    background-color: #9f0e05;
+}
+#Games{
+    height: 0;
+    overflow-y: hidden;
+    transition: height 0.5s ;
+    background-color: cadetblue;
+}
+
+
+
+
+
+
+
 @media (max-width : 40em) {
     .desktop{
         display: none;
