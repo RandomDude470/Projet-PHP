@@ -38,7 +38,7 @@
                 <a style="text-decoration: none;color:inherit;" href="signup.php"><div class="button" role="button">Get started</div></a>
             </div>
             <div class="art">
-                <img src="assests/gameboy3d-no-bg.png" alt="gameboy img">
+                <img src="assests/gameboy3d-no-bg1.png" alt="gameboy img">
             </div>
         </div>
     </section>

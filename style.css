@@ -169,7 +169,7 @@ section .button {
         z-index: 9;
         backdrop-filter: blur(30px);
         background-color: transparent;
-        
+        overflow-x: hidden;
         transition: width .2s;
     }
     .navigation ul.flex-row{
