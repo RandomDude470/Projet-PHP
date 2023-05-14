@@ -16,34 +16,37 @@
 </head>
 
 <body>
-    <header>
-        <div  class="flex-row container">
+    <div>
 
-            <img src="assests/logo-with-text-svg.svg" alt="logo">
-            <div class="navigation">
-                <ul class="flex-row">
-                    <li>Abouts us</li>
-                    <li>Explore</li>
-                   <a class="linkbutton" href="login.php"> <li class="button" role="button">Login</li></a>
-                </ul>
+        <header>
+            <div  class="flex-row container">
+    
+                <img src="assests/logo-with-text-svg.svg" alt="logo">
+                <div class="navigation">
+                    <ul class="flex-row">
+                        <li>Abouts us</li>
+                        <li>Explore</li>
+                       <a class="linkbutton" href="login.php"> <li class="button" role="button">Login</li></a>
+                    </ul>
+                </div>
+                <div role="button" class="nav-menu"></div>
             </div>
-            <div role="button" class="nav-menu"></div>
-        </div>
-    </header>
-    <section class="container">
-        <div class=" flex-row">
-            <div class="text">
-                <h1>Interactive learning</h1>
-                <h2>Enjoy a great learning experience - For <u>FREE</u> !!</h2>
-                <a style="text-decoration: none;color:inherit;" href="signup.php"><div class="button" role="button">Get started</div></a>
+        </header>
+        <section class="container">
+            <div class=" flex-row">
+                <div class="text">
+                    <h1>Interactive learning</h1>
+                    <h2>Enjoy a great learning experience - For <u>FREE</u> !!</h2>
+                    <a style="text-decoration: none;color:inherit;" href="signup.php"><div class="button" role="button">Get started</div></a>
+                </div>
+                <div class="art">
+                    <img src="assests/gameboy3d-no-bg1.png" alt="gameboy img">
+                </div>
             </div>
-            <div class="art">
-                <img src="assests/gameboy3d-no-bg1.png" alt="gameboy img">
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <footer>
-
+        <p>Copyright © Joystick Inc. 2023</p>
     </footer>
 </body>
 

@@ -34,6 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 .flex-row {
   display: flex;
@@ -85,7 +86,7 @@ header > div {
 
 
 section {
-  height: min(80vh,1100px);
+  height: min(85vh,1100px);
   overflow: hidden;
 }
 section > div {
@@ -142,6 +143,7 @@ section .button {
 @media (max-width:765px ) {
     body{
         overflow: hidden;
+        height: 100dvh;
     }
     header{
         height: auto;
@@ -224,4 +226,31 @@ section .button {
     }
     
 
+}
+footer{
+  height: 8vh;
+  width: 100%;
+  background-color: rgb(88, 11, 116) ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-top: auto;
+}
+::-webkit-scrollbar{
+  background: linear-gradient(
+    
+    rgb(88, 11, 116) ,
+    rgba(53, 39, 95, 1) 
+   
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 9px;
+
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgb(47, 7, 61) ;
+  border-radius: 100vw;
+ 
 }
