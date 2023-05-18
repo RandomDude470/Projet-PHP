@@ -33,7 +33,7 @@ nav_items.forEach(item=>{
                 element.childNodes[3].style.color='';
                 
             }
-            item.style.backgroundColor= '8211A9'
+            item.style.backgroundColor= '9f0e05'
             item.childNodes[3].style.color= 'white'
             tabs[1].style.height = '100vh'
         }else{

@@ -64,37 +64,81 @@ if ($arr == null  || $arr[1] != $password) {
                         </div>
                         <div class="infos">
                             <p><?php echo $arr[2]; ?></p>
-                            <p><?php echo ($arr[3]=="user")? "User":"Admin";   ?></p>
+                            <p><?php echo ($arr[3] == "user") ? "User" : "Admin";   ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="grid">
                     <div class="bloc">
                         <h3>Personal Information : </h3>
-                        <p> 
+                        <p>
                             <span class="medium">Full Name :</span> <?php echo $arr[2]; ?> <br>
-                            <span class="medium">Email Adress : </span>  <?php echo $arr[0]; ?> <br>
+                            <span class="medium">Email Adress : </span> <?php echo $arr[0]; ?> <br>
                             <span class="medium">Age : </span> 11 years old <br>
-                            <span class="medium">Date of birth : </span> 22-03-2110 
+                            <span class="medium">Date of birth : </span> 22-03-2110
                         </p>
                     </div>
                     <div class="bloc">
                         <h3>Account Security : </h3>
-                            <p> 
-                                <span class="medium">Password :</span> ********** <span class="pass-chang">change password</span><br>
-                                <span class="medium">Privileges : </span>  <?php echo ($arr[3]=="user")? "User":"Admin";   ?>
-                            </p>
+                        <p>
+                            <span class="medium">Password :</span> ********** <span class="pass-chang">change password</span><br>
+                            <span class="medium">Privileges : </span> <?php echo ($arr[3] == "user") ? "User" : "Admin";   ?>
+                        </p>
                     </div>
                     <div class="bloc">
                         <h3>Deactivate my account : </h3>
                         <p class="bold">
-                           <span class="red"> Warning !</span> By deactivating your account all data and progress will be permanently lost , you will never be able to regain access to your account. Proceed with caution. <br><br><br>
-                            <span class="delete-acc"> I want to permanently  delete my account !</span>
+                            <span class="red"> Warning !</span> By deactivating your account all data and progress will be permanently lost , you will never be able to regain access to your account. Proceed with caution. <br><br><br>
+                            <span class="delete-acc"> I want to permanently delete my account !</span>
                         </p>
                     </div>
                 </div>
             </section>
-            <section id="Media"></section>
+            <section id="Media" class="">
+                <div class="mediaheader flex-row">
+                    <div class="flex-row">
+                        <span>Media</span><img src="assests/down-arrow.png" alt="">
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div class="mediagrid">
+                        <?php
+                        $res =  $connection->query("SELECT `name` FROM collections");
+    
+                        while ($row = $res->fetch_array()) {
+                            $links = $connection->query("SELECT link FROM images WHERE (images.`collection` = '".$row[0]."') LIMIT 2");
+    
+                            if ($links->num_rows > 1) {
+                                
+                                $pic1 = $links->fetch_array()[0];
+                                $pic2 = $links->fetch_array()[0];
+                                echo '<div class="mediabloc">
+                                        <div class="outer card" style="background-image:url('.((!empty($pic1))? $pic1 : '').');">
+                                            <div class="inner card"  style="background-image:url('.((!empty($pic1))? $pic2 : '').');">
+        
+                                            </div>
+                                        </div>
+                                        <p>'.$row[0].'</p>
+                                    </div>';
+                            }elseif ($links->num_rows ==1) {
+                                $pic1 = $links->fetch_array()[0];
+                                echo '<div class="mediabloc">
+                                        <div class="outer card" style="background-image:url();">
+                                            <div class="inner card"  style="background-image:url('.((!empty($pic1))? $pic1 : '').');">
+        
+                                            </div>
+                                        </div>
+                                        <p>'.$row[0].'</p>
+                                    </div>';
+                            }
+                        }
+    
+                        ?>
+                                       
+                    </div>
+
+                </div>
+            </section>
             <section id="Games"></section>
         </main>
     </div>
