@@ -83,7 +83,7 @@ collections.forEach(element => {
             if (xhr_request.status = 200) {
                 response = JSON.parse(xhr_request.responseText)
                 response.forEach(ele =>{
-                    $(".images").append($.parseHTML("<div class=\"image-card\" title=\"loremhhhhhhhhhhhhhhhhhhhhhhhhh\" data-audio=\""+ele.audio+"\"><div style=\"background-image:url('"+ele.link+"')\"></div><p>"+ele.name+"</p></div>"))
+                    $(".images").append($.parseHTML("<div class=\"image-card\" title=\""+ele.description+"\" data-audio=\""+ele.audio+"\"><div style=\"background-image:url('"+ele.link+"')\"></div><p>"+ele.name+"</p></div>"))
                 })
 
             }
