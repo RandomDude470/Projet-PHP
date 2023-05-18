@@ -1,3 +1,4 @@
+//switch tabs from navigation pannel
 const nav_items =[...document.querySelectorAll('.nav-item')];
 const tabs = [...document.querySelectorAll('main section')];
 
@@ -54,3 +55,46 @@ nav_items.forEach(item=>{
         }
     }
 })
+
+//collapse images tab 
+
+const collections_tab = document.querySelector('.mediagrid-wrapper')
+const images = document.querySelector('.collapsable-img-tab')
+const collpasebutton = document.querySelector('.collapsebutton')
+
+
+collpasebutton.onclick = function () { 
+    collpasebutton.style.display = 'none'
+    images.style.width = '0'
+    collections_tab.style.width = '100%'
+
+ }
+
+//generate the images in the image collapsible
+
+const collections = [...document.querySelectorAll('.mediabloc')]
+collections.forEach(element => {
+    element.onclick = function () { 
+        $('.images').html("") 
+        let collectionname = element.lastElementChild.innerHTML
+        var xhr_request = new XMLHttpRequest
+        xhr_request.open('GET','get_images.php?collection='+collectionname, true)
+        xhr_request.onload = function () { 
+            if (xhr_request.status = 200) {
+                response = JSON.parse(xhr_request.responseText)
+                response.forEach(ele =>{
+                    $(".images").append($.parseHTML("<div class=\"image-card\" title=\"loremhhhhhhhhhhhhhhhhhhhhhhhhh\"><div style=\"background-image:url('"+ele.link+"')\"></div><p>"+ele.name+"</p></div>"))
+                })
+
+            }
+
+            images.style.width = '100%'
+            collections_tab.style.width = '0'
+            setTimeout(() => {  collpasebutton.style.display = 'flex'; }, 800);
+            
+         }
+
+        xhr_request.send()
+
+     }
+});
