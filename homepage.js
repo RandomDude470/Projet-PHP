@@ -83,18 +83,43 @@ collections.forEach(element => {
             if (xhr_request.status = 200) {
                 response = JSON.parse(xhr_request.responseText)
                 response.forEach(ele =>{
-                    $(".images").append($.parseHTML("<div class=\"image-card\" title=\"loremhhhhhhhhhhhhhhhhhhhhhhhhh\"><div style=\"background-image:url('"+ele.link+"')\"></div><p>"+ele.name+"</p></div>"))
+                    $(".images").append($.parseHTML("<div class=\"image-card\" title=\"loremhhhhhhhhhhhhhhhhhhhhhhhhh\" data-audio=\""+ele.audio+"\"><div style=\"background-image:url('"+ele.link+"')\"></div><p>"+ele.name+"</p></div>"))
                 })
 
             }
-
+            //open image tab
             images.style.width = '100%'
             collections_tab.style.width = '0'
-            setTimeout(() => {  collpasebutton.style.display = 'flex'; }, 800);
+            setTimeout(() => {  collpasebutton.style.display = 'flex'; }, 300);
             
+            // play animal sounds
+            let collection_imgs = [...document.querySelectorAll('.image-card')]
+        collection_imgs.forEach(a =>{
+            a.onclick = function () { 
+                let audio = new Audio(a.getAttribute("data-audio"))
+                audio.play()
+                console.log(a.getAttribute("data-audio"));
+
+             }
+        })
          }
 
         xhr_request.send()
+        
 
      }
 });
+
+//collection animation
+collections.forEach(coll =>{
+    coll.firstElementChild.addEventListener("mouseover",(ev)=>{
+        console.log(coll);
+        coll.firstElementChild.style.transform ="translateX(-66px) translateY(2px) rotate(350deg)"
+        coll.firstElementChild.firstElementChild.style.transform = " translateX(129px) translateY(31px) rotate(20deg)"
+    })
+    coll.firstElementChild.addEventListener("mouseout",(ev)=>{
+        console.log(coll);
+        coll.firstElementChild.style.transform =""
+        coll.firstElementChild.firstElementChild.style.transform = ""
+    })
+})
