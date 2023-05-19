@@ -84,7 +84,7 @@ if ($arr == null  || $arr[1] != $password) {
                             <span class="medium">Password :</span> ********** <span class="pass-chang">change password</span><br>
                             <span class="medium">Privileges : </span> <?php echo ($arr[3] == "user") ? "User" : "Admin";   ?>
                         </p>
-                        <dialog >
+                        <dialog class="changp" >
                              <div class="box">
                                 <h2>Change Password</h2>
                                 <div class="line"></div>
@@ -94,6 +94,20 @@ if ($arr == null  || $arr[1] != $password) {
                                 <input type="password" name="newp" id="newp" placeholder="Enter new password...">
                                 <div class="line bottom"></div>
                                 <div class="result" ></div>
+
+                                <button class="change-password-button">Confirm</button>
+                                <button class="cancel">Cancel</button>
+                             </div>
+                        </dialog>
+                        <dialog class="deleteacc"  >
+                             <div class="box" style="height:50vh;">
+                                <h2>Delete account</h2>
+                                <div class="line"></div>
+                                <p>Please enter your password : </p>
+                                
+                                <input type="password" name="oldp" id="oldp_d" placeholder="Enter password...">
+                                <div class="line bottom"></div>
+                                <div class="result_d" ></div>
 
                                 <button class="change-password-button">Confirm</button>
                                 <button class="cancel">Cancel</button>

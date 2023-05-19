@@ -44,7 +44,7 @@
                              </style>'.'<span id="error">Invalid Email or password</span>';
                     }
                 ?>
-                <a href="about:blank"><u> Forgot password ?</u></a>
+                <a href="forgotpass.html"><u> Forgot password ?</u></a>
                 <button type="submit">Log in</button>
             </form>
         </div>

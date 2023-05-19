@@ -124,11 +124,12 @@ collections.forEach(coll =>{
     })
 })
 // change password
+const email = document.querySelector('#email').innerHTML
 const ch_p_link = document.querySelector('span.pass-chang')
-const confirm_button = document.querySelector('dialog .change-password-button')
-const cancelbutton = document.querySelector('dialog .cancel')
-const dialogbox = document.querySelector('dialog')
-const resultdiv = document.querySelector('dialog .result')
+const confirm_button = document.querySelector('dialog.changp .change-password-button')
+const cancelbutton = document.querySelector('dialog.changp .cancel')
+const dialogbox = document.querySelector('dialog.changp')
+const resultdiv = document.querySelector('dialog.changp .result')
 
 ch_p_link.onclick = function () { 
     dialogbox.showModal()
@@ -138,10 +139,12 @@ cancelbutton.onclick = function () {
     dialogbox.close()
     dialogbox.style.opacity = '0'
  } 
+
+
 confirm_button.onclick = function (){
     const oldpass = document.querySelector('#oldp').value
     const newpass = document.querySelector('#newp').value
-    const email = document.querySelector('#email').innerHTML
+    
     xhrrequestpassword = new XMLHttpRequest
     xhrrequestpassword.open("GET","changepass.php?oldpass="+oldpass+"&newpass="+newpass+"&email="+email,true)
     xhrrequestpassword.onload = function () { 
@@ -163,6 +166,42 @@ confirm_button.onclick = function (){
      }
     xhrrequestpassword.send()
 }
+//delete account
+const deleteacclink = document.querySelector('.delete-acc')
+const confirm_button_d = document.querySelector('dialog.deleteacc .change-password-button')
+const cancelbutton_d = document.querySelector('dialog.deleteacc .cancel')
+const dialogbox_d = document.querySelector('dialog.deleteacc')
+const resultdiv_d = document.querySelector('dialog .result_d')
+deleteacclink.onclick = function () { 
+    dialogbox_d.showModal()
+    dialogbox_d.style.opacity = '1'
+ }
+cancelbutton_d.onclick = function () { 
+    dialogbox_d.close()
+    dialogbox_d.style.opacity = '0'
+ } 
+ confirm_button_d.onclick = function (){
+    console.log('vghvgc');
+    oldpass_d = document.querySelector('#oldp_d').value
+    xhrrequestpassword = new XMLHttpRequest
+    xhrrequestpassword.open("GET","deleteacc.php?oldpass="+oldpass_d+"&email="+email,true)
+    xhrrequestpassword.onload = function () { 
+        if (xhrrequestpassword.status == 200) {
+            if (xhrrequestpassword.responseText == "done") {
+                window.location.replace('login.php')
+            }else if(xhrrequestpassword.responseText == "nomatch"){
+                resultdiv_d.innerHTML = "Wrong password  "
+                resultdiv_d.style.color = 'red'
+            
+            }else{
+                resultdiv_d.innerHTML = " database error "
+                resultdiv_d.style.color = 'red'
+            }
+        }
+     }
+    xhrrequestpassword.send()
+}
+
 //logout
 logout = document.querySelector('#settings')
 logout.onclick = ()=>{
