@@ -56,7 +56,7 @@ nav_items.forEach(item=>{
     }
 })
 
-//collapse images tab 
+//collapse a collection's images tab 
 
 const collections_tab = document.querySelector('.mediagrid-wrapper')
 const images = document.querySelector('.collapsable-img-tab')
@@ -78,7 +78,7 @@ collections.forEach(element => {
         $('.images').html("") 
         let collectionname = element.lastElementChild.innerHTML
         var xhr_request = new XMLHttpRequest
-        xhr_request.open('GET','get_images.php?collection='+collectionname, true)
+        xhr_request.open("GET","get_images.php?collection="+collectionname, true)
         xhr_request.onload = function () { 
             if (xhr_request.status = 200) {
                 response = JSON.parse(xhr_request.responseText)
@@ -123,3 +123,48 @@ collections.forEach(coll =>{
         coll.firstElementChild.firstElementChild.style.transform = ""
     })
 })
+// change password
+const ch_p_link = document.querySelector('span.pass-chang')
+const confirm_button = document.querySelector('dialog .change-password-button')
+const cancelbutton = document.querySelector('dialog .cancel')
+const dialogbox = document.querySelector('dialog')
+const resultdiv = document.querySelector('dialog .result')
+
+ch_p_link.onclick = function () { 
+    dialogbox.showModal()
+    dialogbox.style.opacity = '1'
+ }
+cancelbutton.onclick = function () { 
+    dialogbox.close()
+    dialogbox.style.opacity = '0'
+ } 
+confirm_button.onclick = function (){
+    const oldpass = document.querySelector('#oldp').value
+    const newpass = document.querySelector('#newp').value
+    const email = document.querySelector('#email').innerHTML
+    xhrrequestpassword = new XMLHttpRequest
+    xhrrequestpassword.open("GET","changepass.php?oldpass="+oldpass+"&newpass="+newpass+"&email="+email,true)
+    xhrrequestpassword.onload = function () { 
+        if (xhrrequestpassword.status == 200) {
+            if (xhrrequestpassword.responseText == "done") {
+                resultdiv.innerHTML = "successfully changed"
+                resultdiv.style.color = 'green'
+            }else if(xhrrequestpassword.responseText == "nomatch"){
+                resultdiv.innerHTML = "the old password is wrong"
+                resultdiv.style.color = 'red'
+            }else  if(xhrrequestpassword.responseText == "empty"){
+                resultdiv.innerHTML = "Please use a valid password "
+                resultdiv.style.color = 'red'
+            }else{
+                resultdiv.innerHTML = " database error "
+                resultdiv.style.color = 'red'
+            }
+        }
+     }
+    xhrrequestpassword.send()
+}
+//logout
+logout = document.querySelector('#settings')
+logout.onclick = ()=>{
+    window.location.replace("login.php")
+}

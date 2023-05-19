@@ -1,4 +1,4 @@
-1-complete Media page design and code 
+~~1-complete Media page design and code ~~
 2-complete Games page design and code 
 3-remove the big ugly cog from nav and put it in the top right corner of the main section and make it collapse the thingy
 4- make the link for changing password clickable and make it actually change passwords and this by taking the same login apge and making in it into one that enables password changing 

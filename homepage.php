@@ -51,7 +51,7 @@ if ($arr == null  || $arr[1] != $password) {
             </div>
             <div class="bottom-nav">
                 <div id="settings">
-                    <img src="assests/settings-cog.png" alt="settings">
+                    <img src="assests/logout.svg">
                 </div>
             </div>
         </nav>
@@ -73,7 +73,7 @@ if ($arr == null  || $arr[1] != $password) {
                         <h3>Personal Information : </h3>
                         <p>
                             <span class="medium">Full Name :</span> <?php echo $arr[2]; ?> <br>
-                            <span class="medium">Email Adress : </span> <?php echo $arr[0]; ?> <br>
+                            <span class="medium">Email Adress : </span> <span id="email"><?php echo $arr[0]; ?></span> <br>
                             <span class="medium">Age : </span> 11 years old <br>
                             <span class="medium">Date of birth : </span> 22-03-2110
                         </p>
@@ -84,6 +84,21 @@ if ($arr == null  || $arr[1] != $password) {
                             <span class="medium">Password :</span> ********** <span class="pass-chang">change password</span><br>
                             <span class="medium">Privileges : </span> <?php echo ($arr[3] == "user") ? "User" : "Admin";   ?>
                         </p>
+                        <dialog >
+                             <div class="box">
+                                <h2>Change Password</h2>
+                                <div class="line"></div>
+                                <p>Please enter the old and new passwords respectively : </p>
+                                
+                                <input type="password" name="oldp" id="oldp" placeholder="Enter old password...">
+                                <input type="password" name="newp" id="newp" placeholder="Enter new password...">
+                                <div class="line bottom"></div>
+                                <div class="result" ></div>
+
+                                <button class="change-password-button">Confirm</button>
+                                <button class="cancel">Cancel</button>
+                             </div>
+                        </dialog>
                     </div>
                     <div class="bloc">
                         <h3>Deactivate my account : </h3>
