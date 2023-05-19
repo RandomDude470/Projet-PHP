@@ -152,7 +152,13 @@ if ($arr == null  || $arr[1] != $password) {
             <section id="Games"></section>
         </main>
     </div>
-    <div class="mobile"></div>
+    <div class="mobile flex-column">
+        <div class="warning flex-column">
+            <img src="assests/robot-error.png" alt="">
+            <h2>Mobile is currently not supported !</h2>
+            <p>Please use the desktop version</p>
+        </div>
+    </div>
 </body>
 
 </html>
