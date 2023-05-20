@@ -85,6 +85,10 @@ ul img{
     aspect-ratio: 1/1;
     margin-inline: auto;
     cursor: pointer;
+    transition: opacity .3s;
+}
+#settings:hover{
+    opacity: .6;
 }
 #settings img{
     width: 50px ;
@@ -283,13 +287,25 @@ dialog input::placeholder{
     width: 100%;
     overflow-x: hidden;
     transition: width 0.6s;
-} 
-.mediagrid{
     height: 92vh;
+} 
+.mediagrid-wrapper::-webkit-scrollbar{
+    width: 15px;
+}
+.mediagrid-wrapper::-webkit-scrollbar-track{
+    background: transparent;
+}
+.mediagrid-wrapper::-webkit-scrollbar-thumb{
+    background-color: #9f0e05;
+    border: white 5px solid;
+    border-radius: 100vmax;
+}
+.mediagrid{
+   
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-row: auto;
-    padding-inline: 10rem;
+    row-gap: 3rem;
+    padding-inline: 3rem;
     padding-block: 4.5rem;
     
 }

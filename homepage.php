@@ -160,6 +160,17 @@ if ($arr == null  || $arr[1] != $password) {
                                             </div>
                                             <p>'.$row[0].'</p>
                                         </div>';
+                                }elseif ($links->num_rows ==0) {
+                                    if ($arr[3]== 'admin') {
+                                        echo '<div class="mediabloc">
+                                        <div class="outer card" style="background-image:url();">
+                                            <div class="inner card"  style="background-image:url();">
+        
+                                            </div>
+                                        </div>
+                                        <p>'.$row[0].'</p>
+                                    </div>'; 
+                                    }
                                 }
                             }
         
