@@ -82,7 +82,7 @@ addimage_from_ui = $("div[title='Add']")[0];
 
 collections.forEach((element) => {
   element.onclick = function () {
-    if ($('.image-card[title="Add"]')[0]) {
+    if ($('.image-card[title="Add"]')[0]) {// if there is an Add image button then clear innerhtml then reappend it .else just clear everything
       $(".images").html("");
       $(".images").append(
         $.parseHTML(
@@ -147,6 +147,17 @@ collections.forEach((element) => {
     };
 
     xhr_request.send();
+
+    // make the collection dropdown menu in the add image dialog box default to the name of the collection the dialog was opened from
+    let dropdownoptions = document.querySelectorAll('dialog.collection_image_add option')
+    dropdownoptions.forEach((option)=>{
+      if (option.value == collectionname) {
+        option.setAttribute("selected","selected")
+      }else{
+        option.removeAttribute("selected")
+      }
+    })
+
   };
 });
 
@@ -264,7 +275,7 @@ const dialogbox_c = document.querySelector("dialog.collection");
 const resultdiv_c = document.querySelector("dialog .result_d");
 
 if (ver_password) {
-  // if the person is not an admin addcollectionbutton is not generated and it creates an error when asigning onclick func = this if clause
+  // if the person is not an admin addcollectionbutton is not generated and it creates an error when asigning onclick func => this if clause
   addCollectionButton.onclick = function () {
     dialogbox_c.showModal();
     dialogbox_c.style.opacity = "1";
