@@ -6,10 +6,12 @@ $result = $connection->query('SELECT email, `password`,`name`,`role` FROM `login
 $arr = $result->fetch_array();
 if ($arr == null  || $arr[1] != $password) {
     header("Location: login.php?try=1");
-    die();
-}
-
-?>
+    die(); }
+    else if($arr[3]=='admin'){
+        ob_start();
+        echo '<p class="security-verification" hidden>thisIsPasswordforxhr</p>';
+        $output = ob_get_clean();
+}?>
 <html lang="en">
 
 <head>
@@ -28,6 +30,10 @@ if ($arr == null  || $arr[1] != $password) {
 </head>
 
 <body>
+    <?php
+
+    echo (isset($output)? $output : '');
+    ?>
     <div class="desktop flex-row">
         <nav class="flex-column">
             <div class="upper-nav upper-section flex-column">
@@ -84,34 +90,34 @@ if ($arr == null  || $arr[1] != $password) {
                             <span class="medium">Password :</span> ********** <span class="pass-chang">change password</span><br>
                             <span class="medium">Privileges : </span> <?php echo ($arr[3] == "user") ? "User" : "Admin";   ?>
                         </p>
-                        <dialog class="changp" >
-                             <div class="box">
+                        <dialog class="changp">
+                            <div class="box">
                                 <h2>Change Password</h2>
                                 <div class="line"></div>
                                 <p>Please enter the old and new passwords respectively : </p>
-                                
+
                                 <input type="password" name="oldp" id="oldp" placeholder="Enter old password...">
                                 <input type="password" name="newp" id="newp" placeholder="Enter new password...">
                                 <div class="line bottom"></div>
-                                <div class="result" ></div>
+                                <div class="result"></div>
 
                                 <button class="change-password-button">Confirm</button>
                                 <button class="cancel">Cancel</button>
-                             </div>
+                            </div>
                         </dialog>
-                        <dialog class="deleteacc"  >
-                             <div class="box" style="height:50vh;">
+                        <dialog class="deleteacc">
+                            <div class="box" style="height:50vh;">
                                 <h2>Delete account</h2>
                                 <div class="line"></div>
                                 <p>Please enter your password : </p>
-                                
+
                                 <input type="password" name="oldp" id="oldp_d" placeholder="Enter password...">
                                 <div class="line bottom"></div>
-                                <div class="result_d" ></div>
+                                <div class="result_d"></div>
 
                                 <button class="change-password-button">Confirm</button>
                                 <button class="cancel">Cancel</button>
-                             </div>
+                            </div>
                         </dialog>
                     </div>
                     <div class="bloc">
@@ -132,59 +138,117 @@ if ($arr == null  || $arr[1] != $password) {
                 <div class="flex-row">
                     <div class="mediagrid-wrapper">
                         <div class="mediagrid">
+                            <?php if($arr[3] == 'admin'){
+                                echo '<div class="mediabloc addnewcollection">
+                                <div class="outer card add" style="background-image:url();">
+                                    <div class="inner card add" style="background-image:url();">
+                                        <img src="assests/add.svg"  alt="">
+                                    </div>
+                                </div>
+                                <p>New collection</p>
+                            </div>';
+                            }  ?>
+                            
                             <?php
                             $res =  $connection->query("SELECT `name` FROM collections");
-        
+
                             while ($row = $res->fetch_array()) {
-                                $links = $connection->query("SELECT link FROM images WHERE (images.`collection` = '".$row[0]."') LIMIT 2");
-        
+                                $links = $connection->query("SELECT link FROM images WHERE (images.`collection` = '" . $row[0] . "') LIMIT 2");
+
                                 if ($links->num_rows > 1) {
-                                    
+
                                     $pic1 = $links->fetch_array()[0];
                                     $pic2 = $links->fetch_array()[0];
-                                    echo '<div class="mediabloc">
-                                            <div class="outer card" style="background-image:url('.((!empty($pic1))? $pic1 : '').');">
-                                                <div class="inner card"  style="background-image:url('.((!empty($pic1))? $pic2 : '').');">
+                                    echo '<div class="mediabloc real">
+                                            <div class="outer card" style="background-image:url(' . ((!empty($pic1)) ? $pic1 : '') . ');">
+                                                <div class="inner card"  style="background-image:url(' . ((!empty($pic1)) ? $pic2 : '') . ');">
             
                                                 </div>
                                             </div>
-                                            <p>'.$row[0].'</p>
+                                            <p>' . $row[0] . '</p>
                                         </div>';
-                                }elseif ($links->num_rows ==1) {
+                                } elseif ($links->num_rows == 1) {
                                     $pic1 = $links->fetch_array()[0];
-                                    echo '<div class="mediabloc">
+                                    echo '<div class="mediabloc real">
                                             <div class="outer card" style="background-image:url();">
-                                                <div class="inner card"  style="background-image:url('.((!empty($pic1))? $pic1 : '').');">
+                                                <div class="inner card"  style="background-image:url(' . ((!empty($pic1)) ? $pic1 : '') . ');">
             
                                                 </div>
                                             </div>
-                                            <p>'.$row[0].'</p>
+                                            <p>' . $row[0] . '</p>
                                         </div>';
-                                }elseif ($links->num_rows ==0) {
-                                    if ($arr[3]== 'admin') {
-                                        echo '<div class="mediabloc">
+                                } elseif ($links->num_rows == 0) {
+                                    if ($arr[3] == 'admin') {
+                                        echo '<div class="mediabloc real">
                                         <div class="outer card" style="background-image:url();">
                                             <div class="inner card"  style="background-image:url();">
         
                                             </div>
                                         </div>
-                                        <p>'.$row[0].'</p>
-                                    </div>'; 
+                                        <p>' . $row[0] . '</p>
+                                    </div>';
                                     }
                                 }
                             }
-        
-                            ?>
-                                           
-                        </div>
 
+                            ?>
+
+                        </div>
+                        <dialog class="collection" >
+                            <div class="box">
+                                <h2>New collection</h2>
+                                <div class="line"></div>
+                                <p></p>
+
+                                <input type="text" name="collname"  placeholder="Name...">
+                               <textarea name="desc" id="desc" cols="30" rows="7" placeholder="Description..."></textarea>
+                                <div class="line bottom"></div>
+                                <div class="result"></div>
+
+                                <button class="addButton_c">Add</button>
+                                <button class="cancel">Cancel</button>
+                            </div>
+                        </dialog>
+                        <dialog class="collection_image_add"  style="opacity: 0;">
+                            <div class="box">
+                                
+                                    <h2>New image</h2>
+                                    <div class="line"></div>
+                                    <p></p>
+                                    
+                                    <input type="text" name="imgname" id="imgname"  placeholder="Name...">
+                                    <select name="imgcollection" id="imgcollection" placeholder="Collection..."> 
+                                        <?php 
+                                            $colls = $connection->query('SELECT `name` FROM collections ');
+                                            while ($line = $colls->fetch_array()) {
+                                                echo '<option value=\''.$line[0].'\'>'.$line[0].'</option>';
+                                            }
+
+                                        ?>
+                                    </select>
+                                    <textarea name="imgdesc" id="imgdesc" cols="30" rows="3" placeholder="Description..."></textarea>
+                                    <label for="imgfile">Image file <span class="red">*</span></label>
+                                    <input type="file" name="imgfile" id="imgfile">
+                                    <label for="audiofile">Audio file</label>
+                                    <input type="file" name="audiofile" id="audiofile">
+
+                                    <div class="line bottom"></div>
+                                    <div class="result"></div>
+
+                                    <button class="addButton_img">Add</button>
+                                    <button class="cancel">Cancel</button>
+                                
+                            </div>
+                        </dialog>
                     </div>
                     <div class="collapsable-img-tab flex-row">
                         <div class="collapsebutton">
                             <img src="assests/down-arrow.png" alt="">
                         </div>
                         <div class="images">
-                            
+                                <?php if ($arr[3] == 'admin') {
+                                    echo "<div class=\"image-card\" title=\"Add\"><div style=\"background-image:url('assests/add.svg');\"></div><p>Add image</p></div>"; 
+                                } ?>
                         </div>
                     </div>
                 </div>
@@ -200,6 +264,19 @@ if ($arr == null  || $arr[1] != $password) {
         </div>
     </div>
 </body>
+<?php
+if (isset($_POST['imgname']) && isset($_POST['imgcollection']) && isset($_POST['imgname']) && isset($_POST['imgfile'])) {
+    $imagename = ($_POST['imgname']);
+    $imagecollection = ($_POST['imgcollection']);
+    $imagedesc = ((isset($_POST['imgdesc']))? $_POST['imgdesc'] : '' );
+    $audio = '';
+    move_uploaded_file($_FILES['imgfile']["tmp_name"],"assests/images/".basename($_FILES['imgfile']['name']));
+    if (isset($_POST['audiofile'])) {
+        $audio = "assests/audio/".basename($_FILES['imgfile']['name']);
+        move_uploaded_file($_FILES['audiofile']["tmp_name"],"assests/audio/".basename($_FILES['audiofile']['name']));
+    }
+    $connection->query("INSERT INTO images VALUES ('','".$imagename."','assests/images/".basename($_FILES['imgfile']['name'])."','".$imagedesc."','".$imagecollection."','".$audio."')");
 
+}?>
 </html>
 <?php $connection->close();

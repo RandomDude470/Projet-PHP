@@ -198,25 +198,33 @@ dialog .box{
     top: 50%;
    left: 50%;
     transform: translate(-50%,-50%);
-    width: 50vw;
+    width: 27vw;
     height: 60vh;
     background-color: #f2f2f2;
     border-radius: 25px;
     padding-inline: 3rem;
     padding-block: 2rem;
 }
+dialog.collection .box{
+    border: #9f0e05 2px solid;
+}
 dialog h2{
     margin-block: 1rem;
     font-size: 28;
 }
-dialog input{
+dialog input,dialog textarea,dialog select{
     display: block;
     border: #35275f solid 1px;
     margin-block: 1.5rem;
     padding-block: 1rem;
-    padding-inline: 1rem;
+    padding-inline: 1.2rem;
     width: 100%;
     border-radius: 35px;
+}
+
+dialog textarea{
+    padding-block: 1.4rem;
+    padding-inline: 1.2rem;
 }
 dialog button:hover{
     opacity: .9;
@@ -236,10 +244,22 @@ dialog button{
     margin-inline: 1.5rem;
     box-shadow: 0 0 6px 0px #7B7B7B;
 }
-dialog input::placeholder{
+dialog input::placeholder,dialog textarea::placeholder{
     color: rgba(0, 0, 0, 0.223);
     font-size: 14;
     font-weight: 500;
+}
+dialog select{
+    appearance: none;
+    background-image: url(assests/down-arrow-black.svg);
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 65%;
+    background-size: 8%;
+    cursor: pointer;
+}
+dialog.collection_image_add .box{
+    height: 84vh;
 }
 #oldp{
     margin-top: 3rem;
@@ -251,7 +271,7 @@ dialog input::placeholder{
     background-color: #9f0e05;
 }
 .line{
-    height: 1px;
+    height: .5px;
     background-color: #7B7B7B;
 }
 .line.bottom{
@@ -259,7 +279,12 @@ dialog input::placeholder{
     margin-bottom: 1rem;
     height: 0.5px;
 }
-
+.collection .line{
+    margin-top: 4%;
+}
+dialog input[type="file"]{
+    margin-block: .3rem;
+}
 
 #Media{
     height: 0;
@@ -313,14 +338,28 @@ dialog input::placeholder{
 .mediagrid .card{
     width: 13vw;
     /* height: 40vh; */
-    background-color: steelblue;
+    background-color: #D9D9D9;
     border-radius: 25px;
     border: #7B7B7B 5px solid;
     aspect-ratio:280/410;
+    
+}
+.mediagrid div.add{
+    border:#7B7B7B 5px dashed;
+}
+.mediabloc:has(.add) p{
+    color: #7B7B7B;
+
+}
+.mediagrid .add img{
+    width: 50%;
+    transition: width .3s;
+ }
+.mediagrid .add img:hover{
+   width: 70%;
 }
 .mediagrid .outer{
     transform: rotate(17deg);
-    background-color: #9f0e05;
     margin-inline:auto ;
     cursor: pointer;
     background-size: cover;
@@ -330,7 +369,8 @@ dialog input::placeholder{
     transform: rotate(-17deg);
     background-size: cover;
     transition: transform 0.3s;
-
+    display: flex;
+    justify-content: center;
 
 }
 .mediagrid p{
@@ -388,6 +428,11 @@ dialog input::placeholder{
     border: #a3a3a3 4px dashed;
     cursor: pointer;
 }
+.image-card[title="Add"] div{
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center
+}
 
 
 
@@ -424,6 +469,7 @@ dialog input::placeholder{
         color: white;
         height: 100vh;
         width: 100dvw;
+        display: flex;
     }
     .mobile div{
         padding-inline: 1rem;

@@ -18,5 +18,5 @@
         }else{
             echo 'nomatch';
         }
-
+        $connection->close();
     }

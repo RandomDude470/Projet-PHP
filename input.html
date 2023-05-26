@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <input type="file" name="imgfile" id="imgfile">
+        <div>jgjhghg</div>
+   
+    <script>
+        document.querySelector('div').addEventListener('click',function (ev) { 
+            ev.preventDefault
+            this.preventDefault
+            p = document.querySelector('input')
+            newf = new FormData
+            newf.append('imgname','newr')
+            newf.append('imgfile',p.files[0],'imgfile.png')
+            newf.append('imgcollection','Animals')
+            fetch('http://localhost/projet-php/upload.php',{
+                method: 'POST',
+                body: newf,
+            })
+         })
+
+        
+    </script>
+</body>
+</html>
