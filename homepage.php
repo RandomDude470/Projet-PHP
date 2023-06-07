@@ -53,6 +53,12 @@ if ($arr == null  || $arr[1] != $password) {
                         <img src="assests/games.png" alt="games">
                         <span>Games</span>
                     </li>
+                    <?php if($arr[3]=='admin') {
+                        echo '<li class="nav-item flex-row ">
+                                <img src="assests/settings-cog.png" alt="adminshit">
+                                <span>Admin settings</span>
+                            </li>';
+                    }?>
                 </ul>
             </div>
             <div class="bottom-nav">
@@ -254,6 +260,9 @@ if ($arr == null  || $arr[1] != $password) {
                 </div>
             </section>
             <section id="Games"></section>
+            <?php if($arr[3]=='admin') {
+                        echo '<section id="AdminSettigns"></section>';
+                    }?>
         </main>
     </div>
     <div class="mobile flex-column">

@@ -46,7 +46,7 @@ nav_items.forEach((item) => {
       item.style.backgroundColor = "9f0e05";
       item.childNodes[3].style.color = "white";
       tabs[1].style.height = "100vh";
-    } else {
+    } else if (item == nav_items[2]) {
       for (let index = 0; index < tabs.length; index++) {
         const element = tabs[index];
         element.style.height = "0";
@@ -59,6 +59,19 @@ nav_items.forEach((item) => {
       item.style.backgroundColor = "8211A9";
       item.childNodes[3].style.color = "white";
       tabs[2].style.height = "100vh";
+    }else{
+      for (let index = 0; index < tabs.length; index++) {
+        const element = tabs[index];
+        element.style.height = "0";
+      }
+      for (let index = 0; index < nav_items.length; index++) {
+        const element = nav_items[index];
+        element.style.backgroundColor = "";
+        element.childNodes[3].style.color = "";
+      }
+      item.style.backgroundColor = "8211A9";
+      item.childNodes[3].style.color = "white";
+      tabs[3].style.height = "100vh";
     }
   };
 });
