@@ -385,6 +385,15 @@ addimgcancel.addEventListener("click", function (ev) {
   $("dialog.collection_image_add")[0].close();
   $("dialog.collection_image_add")[0].style.opacity = "0";
 });
+
+//delete user
+const delete_acc_icons=[...document.querySelectorAll('img[src="assests/cross12.svg"]')] 
+delete_acc_icons.forEach((element)=>{
+  element.addEventListener("click",()=>{
+    fetch("deleteacc.php?email="+element.getAttribute("data-email")+"&oldpass="+element.getAttribute("data-password"))
+    window.location.reload()
+  })
+})
 //logout
 logout = document.querySelector("#settings");
 logout.onclick = () => {

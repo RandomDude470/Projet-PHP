@@ -6,18 +6,19 @@ $result = $connection->query('SELECT email, `password`,`name`,`role` FROM `login
 $arr = $result->fetch_array();
 if ($arr == null  || $arr[1] != $password) {
     header("Location: login.php?try=1");
-    die(); }
-    else if($arr[3]=='admin'){
-        ob_start();
-        echo '<p class="security-verification" hidden>thisIsPasswordforxhr</p>';
-        $output = ob_get_clean();
-}?>
+    die();
+} else if ($arr[3] == 'admin') {
+    ob_start();
+    echo '<p class="security-verification" hidden>thisIsPasswordforxhr</p>';
+    $output = ob_get_clean();
+} ?>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="stylehomepage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,13 +33,13 @@ if ($arr == null  || $arr[1] != $password) {
 <body>
     <?php
 
-    echo (isset($output)? $output : '');
+    echo (isset($output) ? $output : '');
     ?>
     <div class="desktop flex-row">
         <nav class="flex-column">
             <div class="upper-nav upper-section flex-column">
                 <div class="logo">
-                    <img src="assests/logo-black-with-text.svg" alt="logo">
+                    <img style="cursor: pointer;" onclick="window.location.reload()" src="assests/logo-black-with-text.svg" alt="logo">
                 </div>
                 <ul class="flex-column">
                     <li class="nav-item flex-row ">
@@ -53,12 +54,12 @@ if ($arr == null  || $arr[1] != $password) {
                         <img src="assests/games.png" alt="games">
                         <span>Games</span>
                     </li>
-                    <?php if($arr[3]=='admin') {
+                    <?php if ($arr[3] == 'admin') {
                         echo '<li class="nav-item flex-row ">
                                 <img src="assests/settings-cog.png" alt="adminshit">
                                 <span>Admin settings</span>
                             </li>';
-                    }?>
+                    } ?>
                 </ul>
             </div>
             <div class="bottom-nav">
@@ -144,7 +145,7 @@ if ($arr == null  || $arr[1] != $password) {
                 <div class="flex-row">
                     <div class="mediagrid-wrapper">
                         <div class="mediagrid">
-                            <?php if($arr[3] == 'admin'){
+                            <?php if ($arr[3] == 'admin') {
                                 echo '<div class="mediabloc addnewcollection">
                                 <div class="outer card add" style="background-image:url();">
                                     <div class="inner card add" style="background-image:url();">
@@ -154,7 +155,7 @@ if ($arr == null  || $arr[1] != $password) {
                                 <p>New collection</p>
                             </div>';
                             }  ?>
-                            
+
                             <?php
                             $res =  $connection->query("SELECT `name` FROM collections");
 
@@ -200,14 +201,14 @@ if ($arr == null  || $arr[1] != $password) {
                             ?>
 
                         </div>
-                        <dialog class="collection" >
+                        <dialog class="collection">
                             <div class="box">
                                 <h2>New collection</h2>
                                 <div class="line"></div>
                                 <p></p>
 
-                                <input type="text" name="collname"  placeholder="Name...">
-                               <textarea name="desc" id="desc" cols="30" rows="7" placeholder="Description..."></textarea>
+                                <input type="text" name="collname" placeholder="Name...">
+                                <textarea name="desc" id="desc" cols="30" rows="7" placeholder="Description..."></textarea>
                                 <div class="line bottom"></div>
                                 <div class="result"></div>
 
@@ -215,35 +216,35 @@ if ($arr == null  || $arr[1] != $password) {
                                 <button class="cancel">Cancel</button>
                             </div>
                         </dialog>
-                        <dialog class="collection_image_add"  style="opacity: 0;">
+                        <dialog class="collection_image_add" style="opacity: 0;">
                             <div class="box">
-                                
-                                    <h2>New image</h2>
-                                    <div class="line"></div>
-                                    <p></p>
-                                    
-                                    <input type="text" name="imgname" id="imgname"  placeholder="Name...">
-                                    <select name="imgcollection" id="imgcollection" placeholder="Collection..."> 
-                                        <?php 
-                                            $colls = $connection->query('SELECT `name` FROM collections ');
-                                            while ($line = $colls->fetch_array()) {
-                                                echo '<option value=\''.$line[0].'\'>'.$line[0].'</option>';
-                                            }
 
-                                        ?>
-                                    </select>
-                                    <textarea name="imgdesc" id="imgdesc" cols="30" rows="3" placeholder="Description..."></textarea>
-                                    <label for="imgfile">Image file <span class="red">*</span></label>
-                                    <input type="file" name="imgfile" id="imgfile">
-                                    <label for="audiofile">Audio file</label>
-                                    <input type="file" name="audiofile" id="audiofile">
+                                <h2>New image</h2>
+                                <div class="line"></div>
+                                <p></p>
 
-                                    <div class="line bottom"></div>
-                                    <div class="result"></div>
+                                <input type="text" name="imgname" id="imgname" placeholder="Name...">
+                                <select name="imgcollection" id="imgcollection" placeholder="Collection...">
+                                    <?php
+                                    $colls = $connection->query('SELECT `name` FROM collections ');
+                                    while ($line = $colls->fetch_array()) {
+                                        echo '<option value=\'' . $line[0] . '\'>' . $line[0] . '</option>';
+                                    }
 
-                                    <button class="addButton_img">Add</button>
-                                    <button class="cancel">Cancel</button>
-                                
+                                    ?>
+                                </select>
+                                <textarea name="imgdesc" id="imgdesc" cols="30" rows="3" placeholder="Description..."></textarea>
+                                <label for="imgfile">Image file <span class="red">*</span></label>
+                                <input type="file" name="imgfile" id="imgfile">
+                                <label for="audiofile">Audio file</label>
+                                <input type="file" name="audiofile" id="audiofile">
+
+                                <div class="line bottom"></div>
+                                <div class="result"></div>
+
+                                <button class="addButton_img">Add</button>
+                                <button class="cancel">Cancel</button>
+
                             </div>
                         </dialog>
                     </div>
@@ -252,17 +253,44 @@ if ($arr == null  || $arr[1] != $password) {
                             <img src="assests/down-arrow.png" alt="">
                         </div>
                         <div class="images">
-                                <?php if ($arr[3] == 'admin') {
-                                    echo "<div class=\"image-card\" title=\"Add\"><div style=\"background-image:url('assests/add.svg');\"></div><p>Add image</p></div>"; 
-                                } ?>
+                            <?php if ($arr[3] == 'admin') {
+                                echo "<div class=\"image-card\" title=\"Add\"><div style=\"background-image:url('assests/add.svg');\"></div><p>Add image</p></div>";
+                            } ?>
                         </div>
                     </div>
                 </div>
             </section>
             <section id="Games"></section>
-            <?php if($arr[3]=='admin') {
-                        echo '<section id="AdminSettigns"></section>';
-                    }?>
+            <?php if ($arr[3] == 'admin') {
+                echo '<section id="AdminSettigns" class="center-v">
+                        <div class="table-wrapper">
+                        <table class="table table-striped table-bordered">
+                        <caption>Users</caption>
+                        <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Privilege</th>
+                          <th scope="col">Password</th>
+                          <th scope="col">Delete</th>
+
+                        </tr>
+                        ';
+                $users = $connection->query("SELECT `name`,`email`,`role`,`password` FROM `login`");
+                while ($row = $users->fetch_array()) {
+                    echo '<tr>
+                            <td>'.$row[0].'</td>
+                            <td>'.$row[1].'</td>
+                            <td>'.$row[2].'</td>
+                            <td>'.$row[3].'</td>
+                            <td><img data-email="'.$row[1].'" data-password="'.$row[3].'" style="height:30px ; display:block ; margin:auto" src="assests/cross12.svg" alt=""></td>
+                        </tr>';
+                }
+                echo '
+                      </thead>
+                        
+                      </table></div></section>';
+            } ?>
         </main>
     </div>
     <div class="mobile flex-column">
@@ -277,15 +305,15 @@ if ($arr == null  || $arr[1] != $password) {
 if (isset($_POST['imgname']) && isset($_POST['imgcollection']) && isset($_POST['imgname']) && isset($_POST['imgfile'])) {
     $imagename = ($_POST['imgname']);
     $imagecollection = ($_POST['imgcollection']);
-    $imagedesc = ((isset($_POST['imgdesc']))? $_POST['imgdesc'] : '' );
+    $imagedesc = ((isset($_POST['imgdesc'])) ? $_POST['imgdesc'] : '');
     $audio = '';
-    move_uploaded_file($_FILES['imgfile']["tmp_name"],"assests/images/".basename($_FILES['imgfile']['name']));
+    move_uploaded_file($_FILES['imgfile']["tmp_name"], "assests/images/" . basename($_FILES['imgfile']['name']));
     if (isset($_POST['audiofile'])) {
-        $audio = "assests/audio/".basename($_FILES['imgfile']['name']);
-        move_uploaded_file($_FILES['audiofile']["tmp_name"],"assests/audio/".basename($_FILES['audiofile']['name']));
+        $audio = "assests/audio/" . basename($_FILES['imgfile']['name']);
+        move_uploaded_file($_FILES['audiofile']["tmp_name"], "assests/audio/" . basename($_FILES['audiofile']['name']));
     }
-    $connection->query("INSERT INTO images VALUES ('','".$imagename."','assests/images/".basename($_FILES['imgfile']['name'])."','".$imagedesc."','".$imagecollection."','".$audio."')");
+    $connection->query("INSERT INTO images VALUES ('','" . $imagename . "','assests/images/" . basename($_FILES['imgfile']['name']) . "','" . $imagedesc . "','" . $imagecollection . "','" . $audio . "')");
+} ?>
 
-}?>
 </html>
 <?php $connection->close();

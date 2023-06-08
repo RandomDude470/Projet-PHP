@@ -19,6 +19,15 @@ ul li{
     display: flex;
     flex-direction: column;
 }
+.center-v{
+    display: flex;
+    align-items: center;
+}
+.center-h{
+    display: flex;
+    justify-content: center;
+
+}
 nav{
     min-width: 200px;
     height: 100vh;
@@ -436,6 +445,24 @@ dialog input[type="file"]{
 
 
 
+#AdminSettigns{
+    height: 0;
+    overflow-y: hidden;
+    transition: height 0.5s ;
+}
+.table-wrapper{
+    width: 70vw;
+    max-height: 70vh;
+    overflow: auto;
+    margin-inline: auto;
+}
+caption{
+    color: black;
+    font-size: 32;
+}
+img[src="assests/cross12.svg"]{
+    cursor: pointer;
+}
 
 
 
