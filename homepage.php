@@ -178,7 +178,7 @@ if ($arr == null  || $arr[1] != $password) {
                                     $pic1 = $links->fetch_array()[0];
                                     echo '<div class="mediabloc real">
                                             <div class="outer card" style="background-image:url();">
-                                                <div class="inner card"  style="background-image:url(' . ((!empty($pic1)) ? $pic1 : '') . ');">
+                                                <div class="inner card"  style="background-image:url(\''.((!empty($pic1)) ? $pic1 : '').'\');">
             
                                                 </div>
                                             </div>

@@ -1,5 +1,7 @@
 //check if admin
-ver_password = $("p.security-verification")[0]? $("p.security-verification")[0].innerHTML: '';
+ver_password = $("p.security-verification")[0]
+  ? $("p.security-verification")[0].innerHTML
+  : "";
 const email = document.querySelector("#email").innerHTML;
 var admin = 0;
 xhrchechkadmin = new XMLHttpRequest();
@@ -59,7 +61,7 @@ nav_items.forEach((item) => {
       item.style.backgroundColor = "8211A9";
       item.childNodes[3].style.color = "white";
       tabs[2].style.height = "100vh";
-    }else{
+    } else {
       for (let index = 0; index < tabs.length; index++) {
         const element = tabs[index];
         element.style.height = "0";
@@ -95,7 +97,8 @@ addimage_from_ui = $("div[title='Add']")[0];
 
 collections.forEach((element) => {
   element.onclick = function () {
-    if ($('.image-card[title="Add"]')[0]) {// if there is an Add image button then clear innerhtml then reappend it .else just clear everything
+    if ($('.image-card[title="Add"]')[0]) {
+      // if there is an Add image button then clear innerhtml then reappend it .else just clear everything
       $(".images").html("");
       $(".images").append(
         $.parseHTML(
@@ -123,13 +126,22 @@ collections.forEach((element) => {
                 ele.description +
                 '" data-audio="' +
                 ele.audio +
+                '" data-id="' +
+                ele.id +
                 '"><div style="background-image:url(\'' +
                 ele.link +
                 "')\"></div><p>" +
                 ele.name +
-                "</p></div>"
+                "</p><span class=\"del-img-"+ele.id+"\"></span></div>"
             )
           );
+          if (ver_password) {
+            $('.del-img-'+ele.id)[0].innerHTML='<img src="assests/cross12.svg" style="height:30px;display: block;margin: auto;">'
+            $('.del-img-'+ele.id)[0].onclick = ()=>{
+              fetch("remimg.php?pass="+ver_password+"&id="+ele.id)
+              window.location.reload()
+            }
+          }
         });
       }
       //open image tab
@@ -150,7 +162,6 @@ collections.forEach((element) => {
             console.log(a.getAttribute("data-audio"));
           };
         } else {
-          
           addimage_from_ui.addEventListener("click", function (ev) {
             $("dialog.collection_image_add")[0].showModal();
             $("dialog.collection_image_add")[0].style.opacity = "1";
@@ -162,15 +173,16 @@ collections.forEach((element) => {
     xhr_request.send();
 
     // make the collection dropdown menu in the add image dialog box default to the name of the collection the dialog was opened from
-    let dropdownoptions = document.querySelectorAll('dialog.collection_image_add option')
-    dropdownoptions.forEach((option)=>{
+    let dropdownoptions = document.querySelectorAll(
+      "dialog.collection_image_add option"
+    );
+    dropdownoptions.forEach((option) => {
       if (option.value == collectionname) {
-        option.setAttribute("selected","selected")
-      }else{
-        option.removeAttribute("selected")
+        option.setAttribute("selected", "selected");
+      } else {
+        option.removeAttribute("selected");
       }
-    })
-
+    });
   };
 });
 
@@ -328,28 +340,24 @@ if (ver_password) {
 //add image
 const addimagebutton = document.querySelector("button.addButton_img");
 const addimgcancel = $("dialog.collection_image_add .cancel")[0];
-async function sendform(url,form){
+async function sendform(url, form) {
   const rsp = await fetch(url, {
     method: "POST",
     body: form,
   });
   const text = await rsp.text();
-  if (text == 'ok') {
+  if (text == "ok") {
     $("dialog.collection_image_add")[0].close();
     $("dialog.collection_image_add")[0].style.opacity = "0";
-  }else{
-    $('.collection_image_add .result').html('<span class="red">error</span>')
+  } else {
+    $(".collection_image_add .result").html('<span class="red">error</span>');
   }
-
 }
 
 addimagebutton.addEventListener("click", function (event) {
   event.preventDefault();
   formdata = new FormData();
-  formdata.append(
-    "pass",
-    ver_password
-  );
+  formdata.append("pass", ver_password);
   formdata.append(
     "imgname",
     $("dialog.collection_image_add #imgname")[0].value
@@ -374,11 +382,9 @@ addimagebutton.addEventListener("click", function (event) {
       $("dialog.collection_image_add #audiofile")[0].files[0].name
     );
   }
-  sendform("upload.php",formdata)
+  sendform("upload.php", formdata);
+  window.location.reload();
 });
-
-
-
 
 addimgcancel.addEventListener("click", function (ev) {
   ev.preventDefault();
@@ -387,13 +393,20 @@ addimgcancel.addEventListener("click", function (ev) {
 });
 
 //delete user
-const delete_acc_icons=[...document.querySelectorAll('img[src="assests/cross12.svg"]')] 
-delete_acc_icons.forEach((element)=>{
-  element.addEventListener("click",()=>{
-    fetch("deleteacc.php?email="+element.getAttribute("data-email")+"&oldpass="+element.getAttribute("data-password"))
-    window.location.reload()
-  })
-})
+const delete_acc_icons = [
+  ...document.querySelectorAll('img[src="assests/cross12.svg"]'),
+];
+delete_acc_icons.forEach((element) => {
+  element.addEventListener("click", () => {
+    fetch(
+      "deleteacc.php?email=" +
+        element.getAttribute("data-email") +
+        "&oldpass=" +
+        element.getAttribute("data-password")
+    );
+    window.location.reload();
+  });
+});
 //logout
 logout = document.querySelector("#settings");
 logout.onclick = () => {
