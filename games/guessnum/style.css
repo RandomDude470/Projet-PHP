@@ -1,0 +1,27 @@
+body {
+    background-color: purple;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+h1, p {
+    margin-top: 50px;
+}
+
+input[type="number"], button {
+    margin: 10px;
+    padding: 5px;
+}
+
+button {
+    background-color: #ffffff;
+    color: purple;
+    border: none;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+}

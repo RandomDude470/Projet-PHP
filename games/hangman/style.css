@@ -1,0 +1,54 @@
+.cadre{
+    border: 1px solid black;
+    padding:10px;
+    border-radius: 5px;
+    background-color: lightgray;
+    box-shadow: 2px 2px 5px gray;
+    border-width: 2px;
+    border-left-width: 3px;
+}
+h1{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align:center;
+    color:#8211A9;
+}
+body{
+    background-color:#35275F;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+.cadre2{
+    border: 1px solid black;
+    padding:10px;
+    border-radius: 5px;
+    background-color: lightgray;
+    box-shadow: 2px 2px 5px gray;
+    border-width: 2px;
+    border-left-width: 3px;
+    width: 500px;
+    height: 575px;
+    position:relative;
+    top: 20px;
+    display: block;
+    margin-inline: auto;
+}
+.clavier{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    position:relative;
+    row-gap: 1rem;
+    column-gap: 1rem;
+    
+
+}
+#mot_a_deviner{
+    text-align: center;
+    border: solid 2px black;
+    padding-block: 2rem;
+}
+img{
+    height: 60%;
+    display: block;
+    margin: auto;
+}

@@ -178,7 +178,7 @@ if ($arr == null  || $arr[1] != $password) {
                                     $pic1 = $links->fetch_array()[0];
                                     echo '<div class="mediabloc real">
                                             <div class="outer card" style="background-image:url();">
-                                                <div class="inner card"  style="background-image:url(\''.((!empty($pic1)) ? $pic1 : '').'\');">
+                                                <div class="inner card"  style="background-image:url(\'' . ((!empty($pic1)) ? $pic1 : '') . '\');">
             
                                                 </div>
                                             </div>
@@ -260,7 +260,32 @@ if ($arr == null  || $arr[1] != $password) {
                     </div>
                 </div>
             </section>
-            <section id="Games"></section>
+            <section id="Games">
+                <div class="gameheader flex-row">
+                    <div class="flex-row">
+                        <span>Games</span><img src="assests/down-arrow.png" alt="">
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div class="mediagrid-wrapper">
+                        <div class="mediagrid">
+                            <div class="mediabloc" onclick="window.open('./games/hangman/hangman.html')">
+
+                                <div class="gcard" style="background-image: url('games/hangman/gallows.png');"></div>
+                                <p>Hangman <span style="font-size: 11; font-weight:300; " >by Soufiane</span></p>
+                            </div>
+                            <div class="mediabloc" onclick="window.open('./games/Arithmetic/c.html')">
+                                <div class="gcard" style="background-image: url('games/Arithmetic/calculator.png'); background-size:80%;"></div>
+                                <p>Arithmetic <span style="font-size: 11; font-weight:300; " >by Youssef</span></p>
+                            </div>
+                            <div class="mediabloc" onclick="window.open('./games/guessnum/index.html')">
+                                <div class="gcard" style="background-image: url('games/guessnum/abc.png'); background-size:80%;"></div>
+                                <p>Guess the number <span style="font-size: 11; font-weight:300; " >by Ilyacine</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <?php if ($arr[3] == 'admin') {
                 echo '<section id="AdminSettigns" class="center-v">
                         <div class="table-wrapper">
@@ -279,11 +304,11 @@ if ($arr == null  || $arr[1] != $password) {
                 $users = $connection->query("SELECT `name`,`email`,`role`,`password` FROM `login`");
                 while ($row = $users->fetch_array()) {
                     echo '<tr>
-                            <td>'.$row[0].'</td>
-                            <td>'.$row[1].'</td>
-                            <td>'.$row[2].'</td>
-                            <td>'.$row[3].'</td>
-                            <td><img data-email="'.$row[1].'" data-password="'.$row[3].'" style="height:30px ; display:block ; margin:auto" src="assests/cross12.svg" alt=""></td>
+                            <td>' . $row[0] . '</td>
+                            <td>' . $row[1] . '</td>
+                            <td>' . $row[2] . '</td>
+                            <td>' . $row[3] . '</td>
+                            <td><img data-email="' . $row[1] . '" data-password="' . $row[3] . '" style="height:30px ; display:block ; margin:auto" src="assests/cross12.svg" alt=""></td>
                         </tr>';
                 }
                 echo '
