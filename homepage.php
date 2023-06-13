@@ -276,7 +276,7 @@ if ($arr == null  || $arr[1] != $password) {
                             </div>
                             <div class="mediabloc" onclick="window.open('./games/Arithmetic/c.html')">
                                 <div class="gcard" style="background-image: url('games/Arithmetic/calculator.png'); background-size:80%;"></div>
-                                <p>Arithmetic <span style="font-size: 11; font-weight:300; " >by Youssef</span></p>
+                                <p>Riddles <span style="font-size: 11; font-weight:300; " >by Youssef</span></p>
                             </div>
                             <div class="mediabloc" onclick="window.open('./games/guessnum/index.html')">
                                 <div class="gcard" style="background-image: url('games/guessnum/abc.png'); background-size:80%;"></div>

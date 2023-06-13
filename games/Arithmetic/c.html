@@ -1,136 +1,169 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Math Quiz Game</title>
-</head>
+<!-- saved from url=(0051)file:///C:/Users/YOUSSEF/Desktop/page%20pics/c.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>TEST YOUR BRAIN</title>
 <style>
     body {
-    background-color: #f2f2f2;
-    font-family: Arial, sans-serif;
-}
+        background: linear-gradient(to bottom right, #8b00ff, #e600ff);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
-#container {
-    width: 600px;
-    margin: 0 auto;
-    padding-top: 50px;
-}
+    #container {
+        width: 600px;
+        margin: 50px auto;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+    }
 
-h1 {
-    text-align: center;
-    color: #333;
-}
+    h1 {
+        text-align: center;
+        color: #8b00ff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        margin-bottom: 30px;
+    }
 
-#game-container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-}
+    #game-container {
+        background-color: #fbfffd;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    }
 
-#question {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
+    #question {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #8b00ff;
+        text-align: center;
+    }
 
-#answer-input {
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-bottom: 20px;
-}
+    #answer-select {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border: 1px solid #9b06da;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        appearance: none;
+        background-color: #ffffff;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="#9b06da" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 20px;
+        padding-right: 40px;
+    }
 
-#result {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
+    #answer-select option {
+        padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #9b06da;
+    }
 
-button {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+    #result {
+        font-size: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
 
-button:hover {
-    background-color: #45a049;
-}
+    button {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #b32bed;
+        color: #ffffff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-</style>
+    button:hover {
+        background-color: #0f25ef;
+    }
+</style></head>
+
 <body>
     <div id="container">
-        <h1>Math Quiz Game</h1>
+        <h1>TEST YOUR BRAIN</h1>
         <div id="game-container">
-            <p id="question">What is 2 + 3?</p>
-            <input type="number" id="answer-input" placeholder="Enter your answer">
-            <button onclick="checkAnswer()">Submit</button>
+            <p id="question">I have many different-sized teeth, yet I can never bite. So, who am I?</p>
+            <select id="answer-select"><option value=""></option><option value="A comb">A comb</option><option value="A zipper">A zipper</option><option value="A saw">A saw</option><option value="A key">A key</option></select>
+            <button onclick="checkAnswer()">Check your answer</button>
             <p id="result"></p>
             <button onclick="nextQuestion()">Next Question</button>
         </div>
     </div>
 
-    <script >
+    <script>
         var questions = [
-    {
-        question: "What is 2 + 3?",
-        answer: 5
-    },
-    {
-        question: "What is 4 * 6?",
-        answer: 24
-    },
-    {
-        question: "What is 10 - 7?",
-        answer: 3
-    }
-];
+            {
+                question: "I have many different-sized teeth, yet I can never bite. So, who am I?",
+                choices: ["","A comb", "A zipper", "A saw", "A key"],
+                answer: "A comb"
+            },
+            {
+                question: "What is the thing that you can break without touching it?",
+                choices: ["","the life", "the friendship", "the chair", "the Promise"],
+                answer: "the promise"
+            },
+            {
+                question: "What is the thing that grows longer when it's small, and at the same time becomes shorter when it's old?",
+                choices: ["","A candle","A pencil","A lifespan","A shadow"],
+                answer: "A candle"
+            }
+        ];
 
-var currentQuestion = 0;
+        var currentQuestion = 0;
 
-function displayQuestion() {
-    var questionElement = document.getElementById("question");
-    questionElement.textContent = questions[currentQuestion].question;
-}
+        function displayQuestion() {
+            var questionElement = document.getElementById("question");
+            questionElement.textContent = questions[currentQuestion].question;
 
-function checkAnswer() {
-    var answerInput = document.getElementById("answer-input");
-    var userAnswer = parseInt(answerInput.value);
-    var resultElement = document.getElementById("result");
+            var answerSelect = document.getElementById("answer-select");
+            answerSelect.innerHTML = "";
 
-    if (userAnswer === questions[currentQuestion].answer) {
-        resultElement.textContent = "Correct! Good job!";
-        resultElement.style.color = "#008000";
-    } else {
-        resultElement.textContent = "Incorrect. Try again!";
-        resultElement.style.color = "#ff0000";
-    }
+            var choices = questions[currentQuestion].choices;
+            for (var i = 0; i < choices.length; i++) {
+                var option = document.createElement("option");
+                option.value = choices[i];
+                option.text = choices[i];
+                answerSelect.appendChild(option);
+            }
+        }
 
-    answerInput.value = "";
-}
-function displayQuestion() {
-    var questionElement = document.getElementById("question");
-    questionElement.textContent = questions[currentQuestion].question;
-}
+        function checkAnswer() {
+            var answerSelect = document.getElementById("answer-select");
+            var userAnswer = answerSelect.value;
+            var resultElement = document.getElementById("result");
 
+            if (userAnswer === questions[currentQuestion].answer) {
+                resultElement.textContent = "YOU ARE GENIUS!";
+                resultElement.style.color = "#008000";
+            } else {
+                resultElement.textContent = "OUPS! IT'S OKEY TRY AGAIN";
+                resultElement.style.color = "#ff0000";
+            }
 
-function nextQuestion() {
-    var resultElement = document.getElementById("result");
-    resultElement.textContent = "";
-    resultElement.style.color = "#333";
+            answerSelect.value = "";
+        }
 
-    currentQuestion = Math.floor(Math.random() * questions.length);
-    displayQuestion();
-}
+        function nextQuestion() {
+            var resultElement = document.getElementById("result");
+            resultElement.textContent = "";
+            resultElement.style.color = "#333";
 
-   
+            currentQuestion = (currentQuestion + 1) % questions.length;
+            displayQuestion();
+        }
 
+        displayQuestion();
     </script>
-</body>
-</html>
+
+
+</body></html>

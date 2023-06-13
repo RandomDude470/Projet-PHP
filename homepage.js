@@ -58,7 +58,7 @@ nav_items.forEach((item) => {
         element.style.backgroundColor = "";
         element.childNodes[3].style.color = "";
       }
-      item.style.backgroundColor = "8211A9";
+      item.style.backgroundColor = "#059f9a";
       item.childNodes[3].style.color = "white";
       tabs[2].style.height = "100vh";
     } else {
